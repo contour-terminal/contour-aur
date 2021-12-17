@@ -12,6 +12,7 @@ pkgbase = contour-git
 	makedepends = ninja
 	makedepends = qt5-base
 	makedepends = harfbuzz
+	makedepends = catch2
 	makedepends = fontconfig
 	depends = fontconfig
 	provides = contour

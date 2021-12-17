@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
 depends=('fontconfig')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'ninja' 'qt5-base' 'harfbuzz' 'fontconfig')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'gsl' 'fmt' 'ninja' 'qt5-base' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
@@ -27,6 +27,9 @@ build() {
 
   CFLAGS=${CFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
   CXXFLAGS=${CXXFLAGS/-Wp,-D_GLIBCXX_ASSERTIONS}
+
+  # Fetch embedded dependencies
+  PREPARE_ONLY_EMBEDS=ON "./${pkgname}/scripts/install-deps.sh"
 
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
