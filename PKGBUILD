@@ -42,18 +42,20 @@ build() {
 }
 
 check() {
-  cd "${srcdir}/build"
-  ./src/contour/contour version
-  ./src/crispy/crispy_test
-  ./src/terminal/terminal_test
+  # for running tests, it is (currently) expected to be executed
+  # from within the source code's project root directory, in order to
+  # access some test files.
+  cd "${srcdir}/${pkgname}"
+
+  "${srcdir}"/build/src/contour/contour version
+  "${srcdir}"/build/src/crispy/crispy_test
+  "${srcdir}"/build/src/terminal/terminal_test
 }
 
 package() {
-  cd "${srcdir}/build"
-  DESTDIR="${pkgdir}" cmake --build . --target install
+  DESTDIR="${pkgdir}" cmake --build "${srcdir}/build" --target install
 
-  cd "${srcdir}/${pkgname}"
-  install -Dm644 LICENSE.txt "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
+  install -Dm644 "${srcdir}/${pkgname}/LICENSE.txt" "${pkgdir}/usr/share/licenses/${pkgname}/LICENSE"
 }
 
 # vim:set sw=2 sts=2 et:
