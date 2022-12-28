@@ -8,7 +8,7 @@ arch=(x86_64 aarch64)
 url="https://github.com/contour-terminal/contour"
 license=('Apache-2.0')
 depends=('fontconfig')
-makedepends=('cmake' 'extra-cmake-modules' 'git' 'python3' 'microsoft-gsl' 'fmt' 'ninja' 'qt5-base' 'qt5-multimedia' 'qt5-x11extras' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
+makedepends=('cmake' 'extra-cmake-modules' 'git' 'python3' 'microsoft-gsl' 'fmt' 'ninja' 'qt6-5compat' 'qt6-base' 'qt6-declarative' 'qt6-multimedia' 'harfbuzz' 'fontconfig' 'catch2' 'range-v3' 'yaml-cpp')
 source=("${pkgname}::git+https://github.com/contour-terminal/contour.git")
 sha512sums=('SKIP')
 provides=('contour')
@@ -34,6 +34,7 @@ build() {
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
+        -DCONTOUR_BUILD_WITH_QT6=ON \
         -DYAML_BUILD_SHARED_LIBS=OFF -DYAML_CPP_BUILD_CONTRIB=OFF \
         -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF \
         -DYAML_CPP_INSTALL=OFF \
