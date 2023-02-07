@@ -50,7 +50,7 @@ check() {
 
   "${srcdir}"/build/src/contour/contour version
   "${srcdir}"/build/src/crispy/crispy_test
-  "${srcdir}"/build/src/vtbackend/terminal_test
+  "${srcdir}"/build/src/vtbackend/vtbackend_test
 }
 
 package() {
