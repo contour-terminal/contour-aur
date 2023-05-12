@@ -34,7 +34,7 @@ build() {
   cmake -S"${pkgname}" -Bbuild \
         -GNinja \
         -DCMAKE_BUILD_TYPE=Release \
-        -DCONTOUR_BUILD_WITH_QT6=ON \
+        -DCONTOUR_QT_VERSION=6 \
         -DYAML_BUILD_SHARED_LIBS=OFF -DYAML_CPP_BUILD_CONTRIB=OFF \
         -DYAML_CPP_BUILD_TESTS=OFF -DYAML_CPP_BUILD_TOOLS=OFF \
         -DYAML_CPP_INSTALL=OFF \
